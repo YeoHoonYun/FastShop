@@ -1,6 +1,6 @@
 package com.fastcompus.FastBlog.vo;
 
-public class ProductVo {
+public class ProductVO {
 	private int id;
 	private String name;
 	private int size;
