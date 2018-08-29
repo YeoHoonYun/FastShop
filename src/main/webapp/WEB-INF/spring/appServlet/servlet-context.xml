@@ -22,11 +22,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.fastcompus.FastBlog" />
+	
 	
 	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
        <beans:property name="locations" value="WEB-INF/global.properties"/>
    </beans:bean>
+	
+	<context:component-scan base-package="com.fastcompus.FastBlog" />
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -55,7 +57,6 @@
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
 	
-	
-	
+	<!-- <beans:import resource="servlet-context-production.xml></beans> -->
 	
 </beans:beans>

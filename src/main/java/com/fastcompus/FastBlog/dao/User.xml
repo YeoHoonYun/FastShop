@@ -7,15 +7,13 @@
 		first_name, 
 		name, 
 		email, 
-		passwd, 
 		address 
 		)
 			VALUES ( 
-			#{firstName}, 
-			#{name}, 
-			#{email},
-			#{passwd},  
-			#{address}
+			"2", 
+			"2", 
+			"2",
+			"2"
 			)
 	</insert>
 </mapper>

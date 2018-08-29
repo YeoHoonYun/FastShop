@@ -13,6 +13,7 @@ public class UserDAO extends SqlSessionDaoSupport{
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public void insert(UserVO userVO) {
+		System.out.println("22222222222222");
 		getSqlSession().insert("User.insert", userVO);
 	}
 }

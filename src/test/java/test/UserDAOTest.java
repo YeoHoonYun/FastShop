@@ -1,3 +1,5 @@
+package test;
+
 
 import java.util.List;
 
@@ -20,12 +22,18 @@ public class UserDAOTest {
 	
 	@Test
 	public void insert() {
+		System.out.println("-------------");
 		UserVO userVO = new UserVO();
-		userVO.setFirstName("1");
-		userVO.setName("1");
-		userVO.setEmail("1");
-		userVO.setPasswd("1");
-		userVO.setAddress("1");
+		userVO.setFirstName("2");
+		userVO.setName("2");
+		userVO.setEmail("2");
+		userVO.setPasswd("2");
+		userVO.setAddress("2");
+		System.out.println(userVO.getAddress());
+		System.out.println(userVO.getName());
+		System.out.println(userVO.getFirstName());
+		System.out.println(userVO.getEmail());
+		System.out.println(userVO.getPasswd());
 		
 		userDAO.insert(userVO);
 	}
