@@ -2,18 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="User">
+	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.UserVO">
+		<id property="id" column="id"/>
+		<result property="firstName" column="first_name"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="address" column="address"/>
+		<result property="passwd" column="passwd"/>
+	</resultMap>
 	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.UserVO">
 		INSERT INTO users ( 
 		first_name, 
 		name, 
 		email, 
-		address 
+		address,
+		passwd
 		)
 			VALUES ( 
-			"2", 
-			"2", 
-			"2",
-			"2"
+			#{firstName}, 
+			#{name}, 
+			#{email},
+			#{address},
+			#{passwd}
 			)
 	</insert>
+	
+	<select id="selectList" parameterType="java.util.HashMap" resultMap="resultUserVO">
+		SELECT * FROM users LIMIT 10
+	</select>
+	
+	<update id="update" parameterType="com.fastcompus.FastBlog.vo.UserVO">
+		UPDATE users SET
+			first_name = #{firstName},
+			name = #{name},
+			email = #{email},
+			address = #{address},
+			passwd = #{passwd}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="com.fastcompus.FastBlog.vo.UserVO">
+		DELETE FROM users WHERE id = #{id} 
+	</delete>
+	
 </mapper>
