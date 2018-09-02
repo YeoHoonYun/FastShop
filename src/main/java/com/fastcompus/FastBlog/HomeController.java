@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fastcompus.FastBlog.bo.UserBO;
 import com.fastcompus.FastBlog.dao.UserDAO;
 import com.fastcompus.FastBlog.vo.UserVO;
 
