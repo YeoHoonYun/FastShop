@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="Cart">
+	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.CartVO">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="size" column="size"/>
+		<result property="color" column="color"/>
+		<result property="amount" column="amount"/>
+		<result property="imgUrl" column="imgUrl"/>
+		<result property="cartDate" column="cartDate"/>
+		<result property="usersId" column="usersId"/>
+		<result property="productsId" column="productsId"/>
+	</resultMap>
+	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.CartVO">
+		INSERT INTO carts ( 
+		name, 
+		price, 
+		size, 
+		color,
+		amount, 
+		imgUrl, 
+		cartDate, 
+		usersId,
+		products_id
+		)
+			VALUES ( 
+			#{name}, 
+			#{price}, 
+			#{size},
+			#{color},
+			#{amount}, 
+			#{imgUrl}, 
+			NOW(),
+			#{usersId},
+			#{productsId}
+			)
+	</insert>
+	
+	<select id="selectList" parameterType="java.util.HashMap" resultMap="resultUserVO">
+		SELECT * FROM carts LIMIT 10
+	</select>
+	
+	<update id="update" parameterType="com.fastcompus.FastBlog.vo.CartVO">
+		UPDATE carts SET
+			name = #{name},
+			price = #{price},
+			size = #{size},
+			color = #{color},
+			amount = #{amount},
+			imgUrl = #{imgUrl},
+			cartDate = NOW(),
+			usersId = #{usersId},
+			products_id = #{productsId}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="com.fastcompus.FastBlog.vo.CartVO">
+		DELETE FROM carts WHERE id = #{id} 
+	</delete>
+	
+</mapper>

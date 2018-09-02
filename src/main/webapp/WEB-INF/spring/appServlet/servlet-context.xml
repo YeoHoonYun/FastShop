@@ -52,7 +52,32 @@
         <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </beans:bean>
 	
-	<beans:bean id="UserVo" class="com.fastcompus.FastBlog.vo.UserVO"></beans:bean>
+	<beans:bean id="CartVO" class="com.fastcompus.FastBlog.vo.CartVO"></beans:bean>
+	<beans:bean id="CartDAO" class="com.fastcompus.FastBlog.dao.CartDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	
+	<beans:bean id="ComDetailVO" class="com.fastcompus.FastBlog.vo.ComDetailVO"></beans:bean>
+	<beans:bean id="ComDetailDAO" class="com.fastcompus.FastBlog.dao.ComDetailDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	<beans:bean id="CompanyVO" class="com.fastcompus.FastBlog.vo.CompanyVO"></beans:bean>
+	<beans:bean id="CompanyDAO" class="com.fastcompus.FastBlog.dao.CompanyDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	<beans:bean id="OrderVO" class="com.fastcompus.FastBlog.vo.OrderVO"></beans:bean>
+	<beans:bean id="OrderDAO" class="com.fastcompus.FastBlog.dao.OrderDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	<beans:bean id="ProductVO" class="com.fastcompus.FastBlog.vo.ProductVO"></beans:bean>
+	<beans:bean id="ProductDAO" class="com.fastcompus.FastBlog.dao.ProductDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	<beans:bean id="UserDetailVO" class="com.fastcompus.FastBlog.vo.UserDetailVO"></beans:bean>
+	<beans:bean id="UserDetailDAO" class="com.fastcompus.FastBlog.dao.UserDetailDAO">
+		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</beans:bean>
+	<beans:bean id="UserVO" class="com.fastcompus.FastBlog.vo.UserVO"></beans:bean>
 	<beans:bean id="UserDAO" class="com.fastcompus.FastBlog.dao.UserDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>

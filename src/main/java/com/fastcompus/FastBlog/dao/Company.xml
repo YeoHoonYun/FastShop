@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="Company">
+	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.CompanyVO">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="comDate" column="comDate"/>
+	</resultMap>
+	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.CompanyVO">
+		INSERT INTO companys ( 
+		name, 
+		email, 
+		comDate
+		)
+			VALUES ( 
+			#{name}, 
+			#{email}, 
+			NOW()
+			)
+	</insert>
+	
+	<select id="selectList" parameterType="java.util.HashMap" resultMap="resultUserVO">
+		SELECT * FROM companys LIMIT 10
+	</select>
+	
+	<update id="update" parameterType="com.fastcompus.FastBlog.vo.CompanyVO">
+		UPDATE companys SET
+			name = #{name},
+			email = #{email},
+			comDate = NOW()
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="com.fastcompus.FastBlog.vo.CompanyVO">
+		DELETE FROM companys WHERE id = #{id} 
+	</delete>
+	
+</mapper>

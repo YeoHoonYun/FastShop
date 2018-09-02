@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="Order">
+	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.OrderVO">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="size" column="size"/>
+		<result property="color" column="color"/>
+		<result property="amount" column="amount"/>
+		<result property="imgUrl" column="imgUrl"/>
+		<result property="orderDate" column="orderDate"/>
+		<result property="productsId" column="productsId"/>
+	</resultMap>
+	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.OrderVO">
+		INSERT INTO orders ( 
+		name, 
+		email, 
+		price, 
+		size,
+		color,
+		amount,
+		imgUrl,
+		orderDate,
+		products_id
+		)
+			VALUES ( 
+			#{name}, 
+			#{price}, 
+			#{size},
+			#{color}, 
+			#{amount}, 
+			#{imgUrl},
+			NOW(),
+			#{productsId}
+			)
+	</insert>
+	
+	<select id="selectList" parameterType="java.util.HashMap" resultMap="resultUserVO">
+		SELECT * FROM orders LIMIT 10
+	</select>
+	
+	<update id="update" parameterType="com.fastcompus.FastBlog.vo.OrderVO">
+		UPDATE orders SET
+			name = #{name},
+			email = #{email},
+			price = #{price},
+			size = #{size},
+			color = #{color},
+			amount = #{amount},
+			imgUrl = #{imgUrl},
+			NOW(),
+			products_id = #{productsId}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="com.fastcompus.FastBlog.vo.OrderVO">
+		DELETE FROM orders WHERE id = #{id} 
+	</delete>
+	
+</mapper>
