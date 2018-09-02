@@ -2,11 +2,11 @@ package com.fastcompus.FastBlog.vo;
 
 public class UserVO {
 	private int id;
-	private String firstName;
 	private String name;
 	private String email;
 	private String passwd;
 	private String address;
+	private String regDate;
 	
 	public String getName() {
 		return name;
@@ -38,10 +38,10 @@ public class UserVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 }

@@ -4,26 +4,24 @@
 <mapper namespace="User">
 	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.UserVO">
 		<id property="id" column="id"/>
-		<result property="firstName" column="first_name"/>
 		<result property="name" column="name"/>
 		<result property="email" column="email"/>
-		<result property="address" column="address"/>
 		<result property="passwd" column="passwd"/>
+		<result property="address" column="address"/>
+		<result property="regDate" column="regDate"/>
 	</resultMap>
 	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.UserVO">
 		INSERT INTO users ( 
-		first_name, 
 		name, 
 		email, 
-		address,
-		passwd
+		passwd, 
+		address
 		)
 			VALUES ( 
-			#{firstName}, 
 			#{name}, 
-			#{email},
-			#{address},
-			#{passwd}
+			#{email}, 
+			#{passwd},
+			#{address}
 			)
 	</insert>
 	
@@ -33,7 +31,6 @@
 	
 	<update id="update" parameterType="com.fastcompus.FastBlog.vo.UserVO">
 		UPDATE users SET
-			first_name = #{firstName},
 			name = #{name},
 			email = #{email},
 			address = #{address},

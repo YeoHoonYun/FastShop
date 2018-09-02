@@ -23,7 +23,6 @@ public class UserDAOTest {
 	@Test
 	public void insert() {
 		UserVO userVO = new UserVO();
-		userVO.setFirstName("1");
 		userVO.setName("1");
 		userVO.setEmail("1");
 		userVO.setPasswd("1");
@@ -46,7 +45,6 @@ public class UserDAOTest {
 	public void update() {
 		UserVO userVO = new UserVO();
 		userVO.setId(1);
-		userVO.setFirstName("30");
 		userVO.setName("30");
 		userVO.setEmail("30");
 		userVO.setPasswd("30");
@@ -58,7 +56,7 @@ public class UserDAOTest {
 	@Test
 	public void delete() {
 		UserVO userVO = new UserVO();
-		userVO.setId(3);
+		userVO.setId(1);
 		userDAO.delete(userVO.getId());
 	}
 
