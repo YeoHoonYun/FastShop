@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="UserDetail">
+	<resultMap id="resultUserVO" type="com.fastcompus.FastBlog.vo.UserDetailVO">
+		<id property="id" column="id"/>
+		<result property="usersId" column="usersId"/>
+		<result property="hobby" column="hobby"/>
+		<result property="specialty" column="specialty"/>
+	</resultMap>
+	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.UserDetailVO">
+		INSERT INTO userDetails ( 
+		users_id, 
+		hobby, 
+		specialty
+		)
+			VALUES ( 
+			#{usersId}, 
+			#{hobby}, 
+			#{specialty}
+			)
+	</insert>
+	<select id="select" parameterType="com.fastcompus.FastBlog.vo.UserDetailVO" resultMap="resultUserVO">
+		SELECT * FROM userDetails WHERE users_id = #{usersId}
+	</select>
+	
+	<select id="selectList" parameterType="java.util.HashMap" resultMap="resultUserVO">
+		SELECT * FROM userDetails
+	</select>
+	
+	<update id="update" parameterType="com.fastcompus.FastBlog.vo.UserDetailVO">
+		UPDATE userDetails SET
+			user_id = #{userId},
+			hobby = #{hobby},
+			specialty = #{specialty}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="com.fastcompus.FastBlog.vo.UserDetailVO">
+		DELETE FROM userDetails WHERE id = #{id} 
+	</delete>
+	
+</mapper>
