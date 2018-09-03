@@ -1,4 +1,4 @@
-package com.fastcompus.FastBlog;
+package com.fastcompus.FastShop;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fastcompus.FastBlog.dao.UserDAO;
-import com.fastcompus.FastBlog.vo.UserVO;
+import com.fastcompus.FastShop.dao.UserDAO;
+import com.fastcompus.FastShop.vo.UserVO;
 
 /**
  * Handles requests for the application home page.

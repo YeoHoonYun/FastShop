@@ -10,8 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.fastcompus.FastBlog.dao.CompanyDAO;
-import com.fastcompus.FastBlog.vo.CompanyVO;
+import com.fastcompus.FastShop.dao.CompanyDAO;
+import com.fastcompus.FastShop.vo.CompanyVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

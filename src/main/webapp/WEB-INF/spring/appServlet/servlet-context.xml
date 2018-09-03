@@ -28,7 +28,7 @@
        <beans:property name="locations" value="WEB-INF/global.properties"/>
    </beans:bean>
 	
-	<context:component-scan base-package="com.fastcompus.FastBlog" />
+	<context:component-scan base-package="com.fastcompus.FastShop" />
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -43,7 +43,7 @@
     
     <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource" />
-        <beans:property name="typeAliasesPackage" value="com.fastcompus.FastBlog" />
+        <beans:property name="typeAliasesPackage" value="com.fastcompus.FastShop" />
         <beans:property name="configLocation" value="/WEB-INF/mybatis-config.xml"/>
         <beans:property name="mapperLocations" value="classpath*:com/fastcompus/FastBlog/dao/*.xml" />
     </beans:bean>
@@ -52,33 +52,33 @@
         <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </beans:bean>
 	
-	<beans:bean id="CartVO" class="com.fastcompus.FastBlog.vo.CartVO"></beans:bean>
-	<beans:bean id="CartDAO" class="com.fastcompus.FastBlog.dao.CartDAO">
+	<beans:bean id="CartVO" class="com.fastcompus.FastShop.vo.CartVO"></beans:bean>
+	<beans:bean id="CartDAO" class="com.fastcompus.FastShop.dao.CartDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
 	
-	<beans:bean id="ComDetailVO" class="com.fastcompus.FastBlog.vo.ComDetailVO"></beans:bean>
-	<beans:bean id="ComDetailDAO" class="com.fastcompus.FastBlog.dao.ComDetailDAO">
+	<beans:bean id="ComDetailVO" class="com.fastcompus.FastShop.vo.ComDetailVO"></beans:bean>
+	<beans:bean id="ComDetailDAO" class="com.fastcompus.FastShop.dao.ComDetailDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
-	<beans:bean id="CompanyVO" class="com.fastcompus.FastBlog.vo.CompanyVO"></beans:bean>
-	<beans:bean id="CompanyDAO" class="com.fastcompus.FastBlog.dao.CompanyDAO">
+	<beans:bean id="CompanyVO" class="com.fastcompus.FastShop.vo.CompanyVO"></beans:bean>
+	<beans:bean id="CompanyDAO" class="com.fastcompus.FastShop.dao.CompanyDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
-	<beans:bean id="OrderVO" class="com.fastcompus.FastBlog.vo.OrderVO"></beans:bean>
-	<beans:bean id="OrderDAO" class="com.fastcompus.FastBlog.dao.OrderDAO">
+	<beans:bean id="OrderVO" class="com.fastcompus.FastShop.vo.OrderVO"></beans:bean>
+	<beans:bean id="OrderDAO" class="com.fastcompus.FastShop.dao.OrderDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
-	<beans:bean id="ProductVO" class="com.fastcompus.FastBlog.vo.ProductVO"></beans:bean>
-	<beans:bean id="ProductDAO" class="com.fastcompus.FastBlog.dao.ProductDAO">
+	<beans:bean id="ProductVO" class="com.fastcompus.FastShop.vo.ProductVO"></beans:bean>
+	<beans:bean id="ProductDAO" class="com.fastcompus.FastShop.dao.ProductDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
-	<beans:bean id="UserDetailVO" class="com.fastcompus.FastBlog.vo.UserDetailVO"></beans:bean>
-	<beans:bean id="UserDetailDAO" class="com.fastcompus.FastBlog.dao.UserDetailDAO">
+	<beans:bean id="UserDetailVO" class="com.fastcompus.FastShop.vo.UserDetailVO"></beans:bean>
+	<beans:bean id="UserDetailDAO" class="com.fastcompus.FastShop.dao.UserDetailDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
-	<beans:bean id="UserVO" class="com.fastcompus.FastBlog.vo.UserVO"></beans:bean>
-	<beans:bean id="UserDAO" class="com.fastcompus.FastBlog.dao.UserDAO">
+	<beans:bean id="UserVO" class="com.fastcompus.FastShop.vo.UserVO"></beans:bean>
+	<beans:bean id="UserDAO" class="com.fastcompus.FastShop.dao.UserDAO">
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
 	

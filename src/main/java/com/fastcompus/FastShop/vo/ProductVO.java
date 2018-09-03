@@ -1,15 +1,21 @@
-package com.fastcompus.FastBlog.vo;
+package com.fastcompus.FastShop.vo;
 
-public class CartVO {
+public class ProductVO {
+	private int id;
 	private String name;
 	private int price;
-	private int dize;
+	private int size;
 	private String color;
 	private int amount;
 	private String imgUrl;
-	private String cartDate;
-	private int usersId;
-	private int productsId;
+	private String proDate;
+	private int compnaysId;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -22,11 +28,11 @@ public class CartVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getDize() {
-		return dize;
+	public int getSize() {
+		return size;
 	}
-	public void setDize(int dize) {
-		this.dize = dize;
+	public void setSize(int size) {
+		this.size = size;
 	}
 	public String getColor() {
 		return color;
@@ -46,22 +52,17 @@ public class CartVO {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	public String getCartDate() {
-		return cartDate;
+	public String getProDate() {
+		return proDate;
 	}
-	public void setCartDate(String cartDate) {
-		this.cartDate = cartDate;
+	public void setProDate(String proDate) {
+		this.proDate = proDate;
 	}
-	public int getUsersId() {
-		return usersId;
+	public int getCompnaysId() {
+		return compnaysId;
 	}
-	public void setUsersId(int usersId) {
-		this.usersId = usersId;
+	public void setCompnaysId(int compnaysId) {
+		this.compnaysId = compnaysId;
 	}
-	public int getProductsId() {
-		return productsId;
-	}
-	public void setProductsId(int productsId) {
-		this.productsId = productsId;
-	}
+
 }

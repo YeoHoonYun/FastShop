@@ -1,4 +1,4 @@
-package com.fastcompus.FastBlog.vo;
+package com.fastcompus.FastShop.vo;
 
 public class ComDetailVO {
 	private int companysId;

@@ -1,4 +1,4 @@
-package com.fastcompus.FastBlog.dao;
+package com.fastcompus.FastShop.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-import com.fastcompus.FastBlog.vo.CompanyVO;
+import com.fastcompus.FastShop.vo.CompanyVO;
 
 public class CompanyDAO extends SqlSessionDaoSupport{
 	private SqlSessionTemplate sqlSessionTemplate;

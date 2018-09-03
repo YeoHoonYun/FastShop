@@ -1,4 +1,4 @@
-package com.fastcompus.FastBlog.dao;
+package com.fastcompus.FastShop.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,29 +7,29 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-import com.fastcompus.FastBlog.vo.UserVO;
+import com.fastcompus.FastShop.vo.UserDetailVO;
 
-public class UserDAO extends SqlSessionDaoSupport{
+public class UserDetailDAO extends SqlSessionDaoSupport{
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public void insert(UserVO userVO) {
+	public void insert(UserDetailVO userDetailVO) {
 		System.out.println("22222222222222");
-		getSqlSession().insert("User.insert", userVO);
+		getSqlSession().insert("User.insert", userDetailVO);
 	}
 	
-	public List<UserVO> selectList() {
+	public List<UserDetailVO> selectList() {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		return getSqlSession().selectList("User.selectList", paramMap);
 	}
 	
-	public UserVO select(String id) {
+	public UserDetailVO select(String id) {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id", id);
 		return getSqlSession().selectOne("User.select", id);
 	}
 	
-	public void update(UserVO userVO) {
-		getSqlSession().update("User.update", userVO);
+	public void update(UserDetailVO userDetailVO) {
+		getSqlSession().update("User.update", userDetailVO);
 	}
 	
 	public void delete(int id) {
