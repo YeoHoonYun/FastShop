@@ -12,9 +12,9 @@ import com.fastcompus.FastBlog.vo.UserVO;
 public class UserDAO extends SqlSessionDaoSupport{
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public void insert(UserVO userVO) {
-		System.out.println("22222222222222");
+	public UserVO insert(UserVO userVO) {
 		getSqlSession().insert("User.insert", userVO);
+		return userVO;
 	}
 	
 	public List<UserVO> selectList() {

@@ -16,40 +16,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-        $(document).ready(function() {
-            $(".dropdown img.flag").addClass("flagvisibility");
+	  function dataStore(){
+		  var form = { 
+				  "name": $('#FirstName').val() + '_' +$('#LastName').val(), 
+				  "email": $('#Email').val(), 
+				  "passwd": $('#Passwd_1').val()
+				};
+		  console.log(form);
+		  $.ajax({
+		        type: "GET",
+		        url : "/register/join",
+		        data: form,
+		        async: true,
+		        success : function(data, status, xhr) {
+		            console.log(data);
+		            firstGrid.setData({
+		                list: data.list,
+		                page: {
+		                    currentPage: _pageNo,
+		                    pageSize: 10,
+		                    totalElements: data.total,
+		                    totalPages: data.totalPages
+		                }
+		            });
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            alert(jqXHR.responseText);
+		        }
+		    });
+	  }
+      $(document).ready(function() {
+          $(".dropdown img.flag").addClass("flagvisibility");
 
-            $(".dropdown dt a").click(function() {
-                $(".dropdown dd ul").toggle();
-            });
-                        
-            $(".dropdown dd ul li a").click(function() {
-                var text = $(this).html();
-                $(".dropdown dt a span").html(text);
-                $(".dropdown dd ul").hide();
-                $("#result").html("Selected value is: " + getSelectedValue("sample"));
-            });
-                        
-            function getSelectedValue(id) {
-                return $("#" + id).find("dt a span.value").html();
-            }
-
-            $(document).bind('click', function(e) {
-                var $clicked = $(e.target);
-                if (! $clicked.parents().hasClass("dropdown"))
-                    $(".dropdown dd ul").hide();
-            });
-            
-            function myFunction() {
-                console.log(document.getElementById("myForm"));
-            }
-
-
-            $("#flagSwitcher").click(function() {
-                $(".dropdown img.flag").toggleClass("flagvisibility");
-            });
-        });
-     </script>
+          $(".dropdown dt a").click(function() {
+              $(".dropdown dd ul").toggle();
+          });
+                      
+          $(".dropdown dd ul li a").click(function() {
+              var text = $(this).html();
+              $(".dropdown dt a span").html(text);
+              $(".dropdown dd ul").hide();
+              $("#result").html("Selected value is: " + getSelectedValue("sample"));
+          });
+                      
+          function getSelectedValue(id) {
+              return $("#" + id).find("dt a span.value").html();
+          }
+          
+          $(document).bind('click', function(e) {
+              var $clicked = $(e.target);
+              if (! $clicked.parents().hasClass("dropdown"))
+                  $(".dropdown dd ul").hide();
+          });
+          $("#flagSwitcher").click(function() {
+              $(".dropdown img.flag").toggleClass("flagvisibility");
+          });
+      });
+   </script>
  </head>
 <body>
 	<div class="header">
@@ -126,15 +149,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<h3>PERSONAL INFORMATION</h3>
 										<div>
 											<span>First Name<label>*</label></span>
-											<input type="text"> 
+											<input type="text" id='FirstName'> 
 										</div>
 										<div>
 											<span>Last Name<label>*</label></span>
-											<input type="text"> 
+											<input type="text" id='LastName'> 
 										</div>
 										<div>
 											<span>Email Address<label>*</label></span>
-											<input type="text"> 
+											<input type="text"id='Email'> 
 										</div>
 										<div class="clear"> </div>
 											<a class="news-letter" href="#">
@@ -147,16 +170,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<h3>LOGIN INFORMATION</h3>
 										<div>
 											<span>Password<label>*</label></span>
-											<input type="text">
+											<input type="text" id='Passwd_1'>
 										</div>
 										<div>
 											<span>Confirm Password<label>*</label></span>
-											<input type="text">
+											<input type="text" id='Passwd_2'>
 										</div>
 										<div class="clear"> </div>
 								</div>
 								<div class="clear"> </div>
-								<input type="submit" onclick="myFunction()" value="submit">
+								<input type="submit" onclick="dataStore()" value="submit">
 						</form>
 					</div>
 		   </div>
@@ -212,7 +235,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
+			           <p>Â© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
 		            </div>
 					  <dl id="sample" class="dropdown">
 				        <dt><a href="#"><span>Change Region</span></a></dt>
