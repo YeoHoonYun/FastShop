@@ -35,4 +35,8 @@ public class UserDAO extends SqlSessionDaoSupport{
 	public void delete(int id) {
 		getSqlSession().delete("User.delete", id);
 	}
+
+	public UserVO selectByUsername(String username) {
+		return getSqlSession().selectOne("User.selectByUsername", username);
+	}
 }
