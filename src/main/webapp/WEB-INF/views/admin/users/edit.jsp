@@ -19,12 +19,6 @@
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-    <!-- DataTables CSS -->
-    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
@@ -378,7 +372,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">${sessionUsername } 님 어서오세요.</h1> <a href="/admin/login/logout">로그아웃</a>
+                    <h1 class="page-header">Forms</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -387,49 +381,55 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            Basic Form Elements
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                        ${username } - ${id }
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>고객번호</th>
-                                        <th>아이디</th>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>가입일</th>
-                                    </tr>
-                             			</thead>
-                                <tbody>
-<c:forEach items="${userList}" var="userVO">
-                                    <tr class="odd gr이deX">
-                                        <td>${userVO.id}</td>
-                                        <td><a href="/admin/users/info?id=${userVO.id }">${userVO.username}</a></td>
-                                        <td>${userVO.realname}</td>
-                                        <td class="center">${userVO.email}</td>
-                                        <td class="center">${userVO.regDatetime}</td>
-                                    </tr>
-</c:forEach>
-                                </tbody>
-                            </table>
-                        	
-                        	<a href="add" class="btn btn-success">회원 추가</a>   
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" action="doEdit" method="post">
+                                    
+                                    <div class="form-group">
+                                            <label>회원번호 </label>
+                                            <input type="hidden" name="id" value="${userVO.id }" class="form-control">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>아이디(username)</label>
+                                            <input name="username" value="${userVO.username }" class="form-control" placeholder="아이디를 입력하세요.">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>이메일 주소</label>
+                                            <input name="email" value="${userVO.email }" class="form-control" placeholder="이메일을 입력하세요.">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>이름</label>
+                                            <input name="realname" value="${userVO.realname }" class="form-control" placeholder="이름을 입력하세요.">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>비밀번호</label>
+                                            <input name="passwd" value="${userVO.passwd }" type="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-default">회원 수정</button>
+                                        <a href="list" class="btn btn-default">목록으로</a>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                            <!-- /.row (nested) -->
                         </div>
-                        
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                		
                 <!-- /.col-lg-12 -->
             </div>
-
+            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
-
 
     </div>
     <!-- /#wrapper -->
@@ -443,22 +443,8 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-    </script>
 
 </body>
 
