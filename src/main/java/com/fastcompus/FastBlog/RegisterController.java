@@ -34,7 +34,7 @@ public class RegisterController {
 		System.out.println(userVO.getName());
 		System.out.println(userVO.getEmail());
 		System.out.println(userVO.getPasswd());
-		//userDAO.insert(userVO);
+		userDAO.insert(userVO);
 		
 		return null;
 	}

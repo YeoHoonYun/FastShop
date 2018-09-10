@@ -16,7 +16,6 @@
 	<insert id="insert" parameterType="com.fastcompus.FastBlog.vo.OrderVO">
 		INSERT INTO products ( 
 		name, 
-		email, 
 		price, 
 		size,
 		color,

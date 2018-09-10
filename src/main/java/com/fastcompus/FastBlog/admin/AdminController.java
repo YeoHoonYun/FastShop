@@ -1,4 +1,4 @@
-package com.fastcompus.FastBlog;
+package com.fastcompus.FastBlog.admin;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fastcompus.FastBlog.dao.UserDAO;
@@ -151,22 +152,32 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/login/login", method = RequestMethod.GET)
 	public String login(
-			@ModelAttribute("sessionUsername") String sessionUsername
+			@SessionAttribute(required=false, value="sessionUsername") String sessionUsername
 			, Model model) {
-	
 		
+		if(sessionUsername == null || sessionUsername.equals("")) {
+			//로그인이 안되어 있는 상태
+		}else {
+			// 로그인이 되어 있는 상태
+			return "redirect:/admin/users/list";
+		}
+	
 		return "admin/login/login";
 	}
 	
 	@RequestMapping(value = "/admin/login/doLogin", method = RequestMethod.POST)
 	public String doLogin(
-			@ModelAttribute("sessionUsername") String sessionUsername
+			@SessionAttribute(required=false, value="sessionUsername") String sessionUsername
 			, @RequestParam(value="username") String username
 			, @RequestParam(value="passwd") String passwd
 			, Model model) {
 		
 		//userDAO.select(id)
 		UserVO userVO = userDAO.selectByUsername(username);
+		if(userVO == null) {
+			return "admin/login/relogin";
+		}
+		
 		if ( userVO.getPasswd().equals(passwd) ) {
 			// 로그인 성공
 			model.addAttribute("sessionUsername", userVO.getName());

@@ -395,28 +395,27 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>고객번호</th>
-                                        <th>아이디</th>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>가입일</th>
+                                        <th>상품번호</th>
+                                        <th>이미지</th>
+                                        <th>상품명</th>
+                                        <th>가격</th>
+                                        <th>등록일</th>
                                     </tr>
                              			</thead>
                                 <tbody>
-                                
-<c:forEach items="${userList}" var="userVO">
+<c:forEach items="${productList}" var="productVO">
                                     <tr class="odd gr이deX">
-                                        <td>${userVO.id}</td>
-                                        <td><a href="/admin/users/info?id=${userVO.id }">${userVO.username}</a></td>
-                                        <td>${userVO.realname}</td>
-                                        <td class="center">${userVO.email}</td>
-                                        <td class="center">${userVO.regDatetime}</td>
+                                        <td>${productVO.id}</td>
+                                        <td class="center"><img src="/files/${productVO.imgUrl}" width="500" height="300"></td>
+                                        <td><a href="/admin/users/info?id=${productVO.id}">${productVO.name}</a></td>
+                                        <td class="center">${productVO.price}</td>
+                                        <td class="center">${productVO.proDate}</td>
                                     </tr>
 </c:forEach>
                                 </tbody>
                             </table>
                         	
-                        	<a href="add" class="btn btn-success">회원 추가</a>   
+                        	<a href="add" class="btn btn-success">상품 추가</a>   
                         </div>
                         
                         <!-- /.panel-body -->

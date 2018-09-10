@@ -9,7 +9,7 @@ public class ProductVO {
 	private int amount;
 	private String imgUrl;
 	private String proDate;
-	private int compnaysId;
+	private int companysId;
 	public int getId() {
 		return id;
 	}
@@ -58,11 +58,10 @@ public class ProductVO {
 	public void setProDate(String proDate) {
 		this.proDate = proDate;
 	}
-	public int getCompnaysId() {
-		return compnaysId;
+	public int getCompanysId() {
+		return companysId;
 	}
-	public void setCompnaysId(int compnaysId) {
-		this.compnaysId = compnaysId;
+	public void setCompanysId(int companyId) {
+		this.companysId = companyId;
 	}
-
 }
