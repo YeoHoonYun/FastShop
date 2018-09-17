@@ -25,7 +25,7 @@ import com.fastcompus.FastBlog.vo.UserDetailVO;
 import com.fastcompus.FastBlog.vo.UserVO;
 
 @Controller
-//@SessionAttributes({"sessionUsername","sessionEmail"})
+@SessionAttributes({"sessionUsername","sessionEmail"})
 public class ProductController {
 private static final Logger logger = LoggerFactory.getLogger(ProductController.class);	
 	
@@ -37,13 +37,13 @@ private static final Logger logger = LoggerFactory.getLogger(ProductController.c
 	 */
 	@RequestMapping(value = "/admin/products/list", method = RequestMethod.GET)
 	public String list(
-				//@ModelAttribute("sessionUsername") String sessionUsername, 
-				//@ModelAttribute("sessionEmail") String sessionEmail, 
-			Model model) {
-		
-//		if ( sessionUsername.equals("") ) {
-//			return "redirect:/admin/login/login";
-//		}
+			@ModelAttribute("sessionUsername") String sessionUsername
+			, @ModelAttribute("sessionEmail") String sessionEmail
+			, Model model) {
+	
+	if ( sessionUsername.equals("") ) {
+		return "redirect:/admin/login/login";
+	}
 		List<ProductVO> productList = productDAO.selectList();
 		model.addAttribute("productList", productList);
 		
@@ -57,8 +57,8 @@ private static final Logger logger = LoggerFactory.getLogger(ProductController.c
 	
 	@RequestMapping(value = "/admin/products/add", method = RequestMethod.GET)
 	public String add(
-			//@ModelAttribute("sessionUsername") String sessionUsername, 
-			Model model) {
+			@ModelAttribute("sessionUsername") String sessionUsername
+			, Model model) {
 		
 		return "admin/products/add";
 	}
@@ -68,7 +68,7 @@ private static final Logger logger = LoggerFactory.getLogger(ProductController.c
 			@RequestParam(value="name") String name
 			, @RequestParam(value="price") int price
 			,@RequestParam("file") MultipartFile file
-			//, @ModelAttribute("sessionUsername") String sessionUsername
+			, @ModelAttribute("sessionUsername") String sessionUsername
 			
 			, Model model) throws IOException {
 		

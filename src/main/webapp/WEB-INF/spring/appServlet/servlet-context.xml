@@ -21,43 +21,49 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/files/**" location="file:C:/Users/cjswo/Downloads/" />
 
+	<!-- 인터셉터 객체 생성 -->
+    <beans:bean id="sessionHandlerInterceptor" class="com.fastcompus.FastBlog.SessionHandlerInterceptor">
+    </beans:bean>
+    <!-- Interceptor 설정 -->
+    <interceptors>
+        <interceptor>
+            <mapping path="/admin/**"/>
+            <exclude-mapping path="/admin/vendor/**"/>
+            <exclude-mapping path="/admin/login/**"/>
+            <beans:ref bean="sessionHandlerInterceptor"/>
+        </interceptor>
+    </interceptors>
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	
-	
 	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
        <beans:property name="locations" value="WEB-INF/global.properties"/>
    </beans:bean>
 	
 	<context:component-scan base-package="com.fastcompus.FastBlog" />
-	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
         <beans:property name="url" value="${jdbc.url}" />
         <beans:property name="username" value="${jdbc.username}" />
         <beans:property name="password" value="${jdbc.password}" />
     </beans:bean>
-
     <beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <beans:property name="dataSource" ref="dataSource" />
     </beans:bean>
-    
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <beans:property name="defaultEncoding" value="UTF-8"/>
         <beans:property name="maxUploadSize" value="20000000" />
     </beans:bean>
-    
     <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="typeAliasesPackage" value="com.fastcompus.FastBlog" />
         <beans:property name="configLocation" value="/WEB-INF/mybatis-config.xml"/>
-        <beans:property name="mapperLocations" value="classpath*:com/fastcompus/FastBlog/dao/*.xml" />
+        <beans:property name="mapperLocations" value="/WEB-INF/spring/queryFile/*.xml" />
     </beans:bean>
-    
     <beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </beans:bean>
@@ -92,6 +98,6 @@
 		<beans:property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</beans:bean>
 	
-	<!-- <beans:import resource="servlet-context-production.xml></beans> -->
+	<!--  <beans:import resource="servlet-context-production.xml></beans> -->
 	
 </beans:beans>

@@ -40,21 +40,13 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/admin/users/list", method = RequestMethod.GET)
 	public String list(
-				@ModelAttribute("sessionUsername") String sessionUsername
-				, @ModelAttribute("sessionUsername") String sessionEmail
-				, @RequestParam(value="username", defaultValue="") String username
+				@RequestParam(value="username", defaultValue="") String username
 				, @RequestParam(value="id", defaultValue="0") int id
 				, Model model) {
-		
-		if ( sessionUsername.equals("") ) {
-			return "redirect:/admin/login/login";
-		}
 		
 		List<UserVO> userList = userDAO.selectList();
 
 		model.addAttribute("userList", userList);
-		
-		System.out.println(sessionUsername);
 		
 		return "admin/users/list";
 	}
@@ -64,17 +56,13 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/admin/users/info", method = RequestMethod.GET)
 	public String info(
-			@ModelAttribute("sessionUsername") String sessionUsername
-			, @RequestParam(value="id") String id
+			 @RequestParam(value="id") String id
 			, @RequestParam(required=false, value="username") String username
 			, Model model) {
 		
 		UserVO user = userDAO.select(id);
 		
-		model.addAttribute("userVO", user);
-
-		System.out.println(sessionUsername);
-		
+		model.addAttribute("userVO", user);		
 		return "admin/users/info";
 	}
 	
@@ -84,16 +72,13 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/admin/users/edit", method = RequestMethod.GET)
 	public String edit(
-			@ModelAttribute("sessionUsername") String sessionUsername
-			, @RequestParam(value="id") String id
+			@RequestParam(value="id") String id
 			, @RequestParam(required=false, value="username") String username
 			, Model model) {
 		
 		UserVO user = userDAO.select(id);
 		
 		model.addAttribute("userVO", user);
-
-		System.out.println(sessionUsername);
 		
 		return "admin/users/edit";
 	}
@@ -101,8 +86,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/users/add", method = RequestMethod.GET)
 	public String add(
-			@ModelAttribute("sessionUsername") String sessionUsername
-			, Model model) {
+			Model model) {
 		
 		return "admin/users/add";
 	}
@@ -127,7 +111,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin/users/doEdit", method = RequestMethod.POST)
-	public String doAdd(
+	public String doEdit(
 			@RequestParam(value="id") int id
 			, @RequestParam(value="username") String username
 			, @RequestParam(value="email") String email
@@ -156,15 +140,23 @@ public class AdminController {
 			, Model model) {
 		
 		if(sessionUsername == null || sessionUsername.equals("")) {
-			//로그인이 안되어 있는 상태
+			return "admin/login/login";
+			
 		}else {
 			// 로그인이 되어 있는 상태
 			return "redirect:/admin/users/list";
 		}
 	
-		return "admin/login/login";
+		//return "admin/login/login";
 	}
+	@RequestMapping(value = "/admin/login/relogin", method = RequestMethod.GET)
+	public String relogin(
+			@SessionAttribute(required=false, value="sessionUsername") String sessionUsername
+			, Model model) {
 	
+		
+		return "admin/login/relogin";
+	}
 	@RequestMapping(value = "/admin/login/doLogin", method = RequestMethod.POST)
 	public String doLogin(
 			@SessionAttribute(required=false, value="sessionUsername") String sessionUsername
@@ -193,7 +185,6 @@ public class AdminController {
 		
 		return "redirect:/admin/login/login";
 	}
-	
 	
 	@RequestMapping(value = "/admin/login/logout", method = RequestMethod.GET)
 	public String logout(

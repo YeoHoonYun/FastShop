@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                           $12.00</span></li>
 						  <div class="login_buttons">
 							 <div class="check_button"><a href="checkout.html">Check out</a></div>
-							 <div class="login_button"><a href="login.html">Login</a></div>
+							 <div type="submit" class="login_button"></div>
 							 <div class="clear"></div>
 						  </div>
 						  <div class="clear"></div>
@@ -131,15 +131,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <div class="login-title">
 	           		<h4 class="title">Registered Customers</h4>
 					<div id="loginbox" class="loginbox">
-						<form action="" method="post" name="login" id="login-form">
+						<form action="doLogin" method="post" name="login" id="login-form">
 						  <fieldset class="input">
 						    <p id="login-form-username">
 						      <label for="modlgn_username">Email</label>
-						      <input id="modlgn_username" type="text" name="email" class="inputbox" size="18" autocomplete="off">
+						      <input id="modlgn_username" type="text" name="username" class="inputbox" size="18" autocomplete="off">
 						    </p>
 						    <p id="login-form-password">
 						      <label for="modlgn_passwd">Password</label>
-						      <input id="modlgn_passwd" type="password" name="password" class="inputbox" size="18" autocomplete="off">
+						      <input id="modlgn_passwd" type="password" name="passwd" class="inputbox" size="18" autocomplete="off">
 						    </p>
 						    <div class="remember">
 							    <p id="login-form-remember">
@@ -207,7 +207,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
+			           <p>Â© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
 		            </div>
 					  <dl id="sample" class="dropdown">
 				        <dt><a href="#"><span>Change Region</span></a></dt>

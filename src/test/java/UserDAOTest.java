@@ -23,14 +23,14 @@ public class UserDAOTest {
 	@Test
 	public void insert() {
 		UserVO userVO = new UserVO();
-		userVO.setName("À±¿©ÈÆ");
-		userVO.setEmail("cjswo9207@naver.com");
+		userVO.setName("À±ÀºÇÏ");
+		userVO.setEmail("yyh9595@naver.com");
 		userVO.setPasswd("1234");
 		userVO.setAddress("°æ±â ¾È»ê½Ã");
 		
 		userDAO.insert(userVO);
 	}
-//	
+	
 //	@Test
 //	public void selectList() {
 //		List<UserVO> userList = userDAO.selectList();
@@ -40,7 +40,7 @@ public class UserDAOTest {
 //			assertTrue(userVO instanceof UserVO);
 //		}
 //	}
-//	
+	
 //	@Test
 //	public void update() {
 //		UserVO userVO = new UserVO();
